@@ -42,11 +42,10 @@ public class ProdutoDAO {
              throw new RuntimeException(e);
          }
     }
-    public ArrayList<Produto> ConsultaProduto(String Consulta){
-    	String sql = "SELECT idProduto,NomeProduto, QuantEstoque, Preco FROM produto WHERE NomeProduto LIKE ?";
+    public ArrayList<Produto> ConsultaProduto(){
+    	String sql = "SELECT idProduto,NomeProduto, QuantEstoque, Preco FROM produto WHERE NomeProduto";
         try {
             stmt = conexao.prepareStatement(sql);
-            stmt.setString(1, "%" + Consulta + "%");
             ResultSet rs = stmt.executeQuery();
             ArrayList<Produto> lista = new ArrayList<Produto>();
             while (rs.next()) {
