@@ -23,7 +23,7 @@ public class Main {
 		System.out.println("Insira o e-mail da sua conta: ");
 		ScanStr = Scan.nextLine();
 		u.setEmail(ScanStr);
-		System.out.println("Insira o seu endereÁo: ");
+		System.out.println("Insira o seu endere√ßo: ");
 		ScanStr = Scan.nextLine();
 		u.setEndereco(ScanStr);
 		System.out.println("Insira seu telefone: ");
@@ -33,14 +33,14 @@ public class Main {
 		UsuarioDAO ud = new UsuarioDAO();
 		ud.Cadastro(u);
 		
-		System.out.println("Este usuario È um funcionario??(s/n): ");
+		System.out.println("Este usuario √© um funcionario??(s/n): ");
 		ScanStr = Scan.nextLine();
 		if (ScanStr.equals("s") == true) {
 			Funcionario f = new Funcionario();
 			f.setIdUsuario(u.getIdUsuario());
 			FuncionarioDAO fd = new FuncionarioDAO();
 			fd.CadFunc(f);
-			System.out.println("Este funcionario È um administrador??(s/n): ");
+			System.out.println("Este funcionario √© um administrador??(s/n): ");
 			ScanStr = Scan.nextLine();
 			if (ScanStr.equals("s") == true) {
 				Administrador a = new Administrador();
@@ -73,12 +73,12 @@ public class Main {
 			break;
 		}else
 		{
-			System.out.println("Senha ou login n„o encontrado, tente novamente!!");
+			System.out.println("Senha ou login n√£o encontrado, tente novamente!!");
 		}
 		}
 		if (v3 == true) {
 		while(0<1){
-			System.out.println("OpÁıes:");
+			System.out.println("Op√ß√µes:");
 			System.out.println("1- Cadastrar produto.");
 			System.out.println("2- Comprar.");
 			System.out.println("3- Repor estoque.");
@@ -109,22 +109,20 @@ public class Main {
 				ScanInt = input.nextInt();
 				p.setQuant(ScanInt);
 				
-				System.out.println("Insira o preÁo do produto:");
+				System.out.println("Insira o pre√ßo do produto:");
 				ScanFloat = input1.nextFloat();
 				p.setPreco(ScanFloat);
 				
 				ProdutoDAO pd = new ProdutoDAO();
 				pd.InserirProduto(p);
 			}else if (scanInt == 2) {
-				System.out.println("Insira o nome produto que vocÍ quer comprar: ");
-				ScanStr = Scan.nextLine();
 				ProdutoDAO pd = new ProdutoDAO();
-				lista = pd.ConsultaProduto(ScanStr);
+				lista = pd.ConsultaProduto();
 				for (int counter = 0; counter < lista.size(); counter++) { 		      
 					 System.out.println("ID = " + lista.get(counter).getCodProduto());
 			          System.out.println(lista.get(counter).getNomeProduto());
 			          System.out.println("Quantidade no estoque: " + lista.get(counter).getQuant());
-			          System.out.println("PreÁo da unidade: " + lista.get(counter).getPreco() + " R$");
+			          System.out.println("Pre√ßo da unidade: " + lista.get(counter).getPreco() + " R$");
 				}
 				Compra c = new Compra();
 				CompraDAO cd = new CompraDAO();
@@ -155,14 +153,12 @@ public class Main {
 				if (ScanStr.equals("n") == true) {
 					break;
 				}
-				System.out.println("Insira o nome produto que vocÍ quer comprar: ");
-				ScanStr = Scan.nextLine();
-				lista = pd.ConsultaProduto(ScanStr);
+				lista = pd.ConsultaProduto();
 				for (int counter = 0; counter < lista.size(); counter++) { 		      
 					 System.out.println("ID = " + lista.get(counter).getCodProduto());
 			          System.out.println(lista.get(counter).getNomeProduto());
 			          System.out.println("Quantidade no estoque: " + lista.get(counter).getQuant());
-			          System.out.println("PreÁo da unidade: " + lista.get(counter).getPreco() + " R$");
+			          System.out.println("Pre√ßo da unidade: " + lista.get(counter).getPreco() + " R$");
 				}
 				System.out.println("Insira o id do produto: ");
 				ScanInt = input.nextInt();
@@ -187,20 +183,18 @@ public class Main {
 				
 				cd.ColocarPreco(c);
 				cd.MostrarPreco(c);
-				System.out.println("O preÁo total È: " + c.getPrecoTotal() + " R$");
+				System.out.println("O pre√ßo total √©: " + c.getPrecoTotal() + " R$");
 				
 			}else if (scanInt == 3) {
 				Produto p = new Produto();
-				System.out.println("Insira o nome produto que vocÍ vai repor: ");
-				ScanStr = Scan.nextLine();
 				ProdutoDAO pd = new ProdutoDAO();
-				lista = pd.ConsultaProduto(ScanStr);
+				lista = pd.ConsultaProduto();
 				
 				for (int counter = 0; counter < lista.size(); counter++) { 		      
 			          System.out.println("ID = " + lista.get(counter).getCodProduto());
 			          System.out.println(lista.get(counter).getNomeProduto());
 			          System.out.println("Quantidade no estoque: " + lista.get(counter).getQuant());
-			          System.out.println("PreÁo da unidade: " + lista.get(counter).getPreco() + " R$");
+			          System.out.println("Pre√ßo da unidade: " + lista.get(counter).getPreco() + " R$");
 			      }
 				System.out.println("Insira o id do produto para repor: ");
 				ScanInt = input.nextInt();
@@ -217,7 +211,7 @@ public class Main {
 				Us = ud.consultarCadastro(ScanStr);
 				for (int counter = 0; counter < Us.size(); counter++) { 
 					System.out.println("Nome = " + Us.get(counter).getNome());
-					System.out.println("EndereÁo = " + Us.get(counter).getEndereco());
+					System.out.println("Endere√ßo = " + Us.get(counter).getEndereco());
 				}
 			}else if (scanInt == 5) {
 				CompraDAO cd1 = new CompraDAO();
@@ -240,21 +234,19 @@ public class Main {
 		}
 	}else if(v2 == true) {
 		while(0<1){
-			System.out.println("OpÁıes:");
+			System.out.println("Op√ß√µes:");
 			System.out.println("1- Comprar.");
 			System.out.println("2- Repor estoque.");
 			System.out.println("3- Consultar compras.");
 			int scanInt = input.nextInt();
 			if (scanInt == 1) {
-				System.out.println("Insira o nome produto que vocÍ quer comprar: ");
-				ScanStr = Scan.nextLine();
 				ProdutoDAO pd = new ProdutoDAO();
-				lista = pd.ConsultaProduto(ScanStr);
+				lista = pd.ConsultaProduto();
 				for (int counter = 0; counter < lista.size(); counter++) { 		      
 					 System.out.println("ID = " + lista.get(counter).getCodProduto());
 			          System.out.println(lista.get(counter).getNomeProduto());
 			          System.out.println("Quantidade no estoque: " + lista.get(counter).getQuant());
-			          System.out.println("PreÁo da unidade: " + lista.get(counter).getPreco() + " R$");
+			          System.out.println("Pre√ßo da unidade: " + lista.get(counter).getPreco() + " R$");
 				}
 				Compra c = new Compra();
 				CompraDAO cd = new CompraDAO();
@@ -285,14 +277,12 @@ public class Main {
 				if (ScanStr.equals("n") == true) {
 					break;
 				}
-				System.out.println("Insira o nome produto que vocÍ quer comprar: ");
-				ScanStr = Scan.nextLine();
-				lista = pd.ConsultaProduto(ScanStr);
+				lista = pd.ConsultaProduto();
 				for (int counter = 0; counter < lista.size(); counter++) { 		      
 					 System.out.println("ID = " + lista.get(counter).getCodProduto());
 			          System.out.println(lista.get(counter).getNomeProduto());
 			          System.out.println("Quantidade no estoque: " + lista.get(counter).getQuant());
-			          System.out.println("PreÁo da unidade: " + lista.get(counter).getPreco() + " R$");
+			          System.out.println("Pre√ßo da unidade: " + lista.get(counter).getPreco() + " R$");
 				}
 				System.out.println("Insira o id do produto: ");
 				ScanInt = input.nextInt();
@@ -317,19 +307,17 @@ public class Main {
 				
 				cd.ColocarPreco(c);
 				cd.MostrarPreco(c);
-				System.out.println("O preÁo total È: " + c.getPrecoTotal() + " R$");
+				System.out.println("O pre√ßo total √©: " + c.getPrecoTotal() + " R$");
 			}else if (scanInt == 2) {
 				Produto p = new Produto();
-				System.out.println("Insira o nome produto que vocÍ vai repor: ");
-				ScanStr = Scan.nextLine();
 				ProdutoDAO pd = new ProdutoDAO();
-				lista = pd.ConsultaProduto(ScanStr);
+				lista = pd.ConsultaProduto();
 				
 				for (int counter = 0; counter < lista.size(); counter++) { 		      
 			          System.out.println("ID = " + lista.get(counter).getCodProduto());
 			          System.out.println(lista.get(counter).getNomeProduto());
 			          System.out.println("Quantidade no estoque: " + lista.get(counter).getQuant());
-			          System.out.println("PreÁo da unidade: " + lista.get(counter).getPreco() + " R$");
+			          System.out.println("Pre√ßo da unidade: " + lista.get(counter).getPreco() + " R$");
 			      }
 				System.out.println("Insira o id do produto para repor: ");
 				ScanInt = input.nextInt();
@@ -360,15 +348,13 @@ public class Main {
 	}else if(v1 == true) {
 		
 	while(0<1){
-		System.out.println("Insira o nome produto que vocÍ quer comprar: ");
-		ScanStr = Scan.nextLine();
 		ProdutoDAO pd = new ProdutoDAO();
-		lista = pd.ConsultaProduto(ScanStr);
+		lista = pd.ConsultaProduto();
 		for (int counter = 0; counter < lista.size(); counter++) { 		      
 			 System.out.println("ID = " + lista.get(counter).getCodProduto());
 	          System.out.println(lista.get(counter).getNomeProduto());
 	          System.out.println("Quantidade no estoque: " + lista.get(counter).getQuant());
-	          System.out.println("PreÁo da unidade: " + lista.get(counter).getPreco() + " R$");
+	          System.out.println("Pre√ßo da unidade: " + lista.get(counter).getPreco() + " R$");
 		}
 		Compra c = new Compra();
 		CompraDAO cd = new CompraDAO();
@@ -399,14 +385,12 @@ public class Main {
 		if (ScanStr.equals("n") == true) {
 			break;
 		}
-		System.out.println("Insira o nome produto que vocÍ quer comprar: ");
-		ScanStr = Scan.nextLine();
-		lista = pd.ConsultaProduto(ScanStr);
+		lista = pd.ConsultaProduto();
 		for (int counter = 0; counter < lista.size(); counter++) { 		      
 			 System.out.println("ID = " + lista.get(counter).getCodProduto());
 	          System.out.println(lista.get(counter).getNomeProduto());
 	          System.out.println("Quantidade no estoque: " + lista.get(counter).getQuant());
-	          System.out.println("PreÁo da unidade: " + lista.get(counter).getPreco() + " R$");
+	          System.out.println("Pre√ßo da unidade: " + lista.get(counter).getPreco() + " R$");
 		}
 		System.out.println("Insira o id do produto: ");
 		ScanInt = input.nextInt();
@@ -431,15 +415,13 @@ public class Main {
 		
 		cd.ColocarPreco(c);
 		cd.MostrarPreco(c);
-		System.out.println("O preÁo total È: " + c.getPrecoTotal() + " R$");
+		System.out.println("O pre√ßo total √©: " + c.getPrecoTotal() + " R$");
 			System.out.println("Deseja encerrar??(s/n)");
 			ScanStr = Scan.nextLine();
 			if (ScanStr.equals("s") == true) {
 				break;
 			}
-			
-		}
-		
+		}	
 	}
 	}
 }
